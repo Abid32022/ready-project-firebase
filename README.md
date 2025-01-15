@@ -1,17 +1,27 @@
-# ResFul Api's Archetecture
+# RESTful Api's Archetecture
 
 A new Flutter project.
 Change the name app name,package name, app icon before starting new project.
 1.Change -- a.app_name b.package_name c.app_icon d.firebase to new project.
+---
 2.permissions done for image picker in both
+---
 3.a.push notification with firebase for android and ios but ios configuration are remaning like appstore certificate etc
+---
 4.localization b.theme done.
+---
 5.internet-connectivity-checker done without retry button for whole app just one check uncheck in main it will work or can use seprate in everyscreen.
+---
 6.shared preference save token get token used intialize it in splash screen if null go to login screen.Also secure storage used for token.
+---
 7.shared preference method already made as a custom.
+---
 8.get image function made in appconstant for image picker and used in.
+---
 9. go_route used
+---
 10. custom widgets
+---
 11. cached network image
 12. custom button (with ios and android circular indicator pass only loading varaible)
 13. custom dailogue (with work for both android ios differently)
