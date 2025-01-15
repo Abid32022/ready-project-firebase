@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:my_qurbani/config/app_constant.dart';
 import 'package:my_qurbani/config/app_validators.dart';
@@ -8,7 +10,6 @@ import 'package:my_qurbani/views/custom_widgets/custom_shimmer.dart';
 import 'package:my_qurbani/views/dashboard/category_provider.dart';
 import 'package:provider/provider.dart';
 // import 'package:skeletonizer/skeletonizer.dart';
-
 import '../custom_widgets/custom_button.dart';
 import '../custom_widgets/custom_screen_indicator.dart';
 import '../custom_widgets/custom_textfield.dart';
@@ -21,6 +22,22 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
+
+
+  String? _imagePath;
+  String? _imagePath2;
+
+  void _updateImagePath(String? path) {
+    setState(() {
+      _imagePath = path;
+    });
+  }
+  void _updateImagePath2(String? path) {
+    setState(() {
+      _imagePath2 = path;
+    });
+  }
+
   void initState() {
     super.initState();
     Future.microtask(() {
@@ -46,6 +63,49 @@ class _CategoryScreenState extends State<CategoryScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: 70 ,
+                ),
+                ///image picker
+                if (_imagePath != null)
+                  Image.file(
+                    File(_imagePath!),
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  )
+                else
+                  Text('No image selected'),
+                SizedBox(height: 40.h,),
+                ElevatedButton(
+                  onPressed: () {
+                   AppConstants.getImage(_updateImagePath);
+                  },
+                  child: Text('Pick Image'),
+                ),
+
+                if (_imagePath2 != null)
+                  Image.file(
+                    File(_imagePath2!),
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  )
+                else
+                  Text('No image selected'),
+                SizedBox(height: 40.h,),
+                ElevatedButton(
+                  onPressed: () {
+                    AppConstants.getImage(_updateImagePath2 );
+                    // print(_imagePath2);
+                    // String filepath = _imagePath2!.toString().trim();
+                    // String fileName = filepath.split('/').last;
+                    //
+                    // print(filepath);
+                  },
+                  child: Text('Pick Image'),
+                ),
+                ///validations // focus node
                 SizedBox(
                   height: 40,
                 ),
@@ -103,6 +163,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   color: Colors.red,
                   size: 50.0,
                 ),
+
+                ///spinkit indicator designs
                 // SpinKitDoubleBounce(
                 //   color: Colors.red,
                 //   size: 50.0,
@@ -119,18 +181,23 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 //   color: Colors.pink,
                 //   size: 20.0,
                 // ),
+                ///spinkit indicator designs
+
                 CustomButton(text: 'Login',loading:false ,onPressed: (){},),
                 // SpinKitCircle(
                 //   color: Colors.blue,  // Spinner color
                 //   size: 50.0,          // Spinner size
                 // ),
+                ///long text short text and square indicators
                 // SizedBox(height: 20,),
                 // TextLongShimmer(),
                 // SizedBox(height: 20,),
                 // TextShortShimmer(),
                 // SizedBox(height: 20,),
                 // ShimmerPlaceholder(height: 200, width: 200),
+                ///long text short text and square indicators
 
+                ///animated gridview.builder
                 // Expanded(
                 //   child: GridView.builder(
                 //     itemCount: 4,
@@ -160,6 +227,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 //     },
                 //   ),
                 // ),
+                ///animated gridview.builder
+
               ],
             ),
           ),

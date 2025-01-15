@@ -14,6 +14,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:my_qurbani/config/all_providers.dart';
 import 'package:my_qurbani/services/internet_conectivity_checker.dart';
+import 'package:my_qurbani/utils/helper/setup_locator.dart';
 import 'package:my_qurbani/utils/routing.dart';
 import 'package:my_qurbani/views/custom_widgets/custom_button.dart';
 import 'package:my_qurbani/views/custom_widgets/no_internet_screen.dart';
@@ -28,20 +29,26 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 //go route
 //placeholer cahed image
 //with image api hit like profile etc multipart
+
 //flavours
+
 //river pod and bloc
 //firebase notification
 //test file testing
 //Api hit and screen navigation print  -- check it get repository app
+
 //isLoading issue for every api
+
 //app constant token if null or empty
 // single image and multiple image or with video api
 // during development CI/CD unit testing /code magic
 //isloading in button parameter for both android and ios
 //appexcenptions
-//isolates
+//isolates screen
+
 //multiple api same fucntion loading variable checking.
 //pagination code
+
 // filter search
 //refresh indicator
 //no internet screen for all screen separatly.
@@ -49,10 +56,19 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 //spinkit for whole screen
 //gridview.builder animation of list and listview builder
 //screen to screen animation small one
-// whole screen indicator
+// whole screen indicator widget
 // RSizedBox from tresorly
+
 // profile api of myqurbani
 // permission handler in both ios and android
+// app store upload way
+// payment method
+
+//google sign in with apple and android , facebook ,apple code
+// split image according to api function
+//enums and its use and benefits and externsion
+//switch case best use
+
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message)async {
   await Firebase.initializeApp();
@@ -60,6 +76,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message)async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
@@ -152,12 +169,15 @@ class _MyAppState extends State<MyApp> {
                 Locale('en'),
                 Locale('es'),
               ],
+
               // builder: (context, child) {
               //   if (!_hasInternet) {
               //     return NoInternetScreen(); // Show No Internet Screen
               //   }
               //   return child!;
-              // }
+              // } +92213647000311
+              //0213647003445464748
+
 
               );
         }),

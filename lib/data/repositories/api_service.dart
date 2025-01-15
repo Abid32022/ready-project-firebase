@@ -11,10 +11,9 @@ class ApiService {
     return apiClient.post(url: AppUrls.signUp, params: param);
   }
 
-  Future<Response> login({var param}) {
-    return apiClient.post(url: AppUrls.login, params: param);
+  Future<Response> login({var data}) {
+    return apiClient.post(url: AppUrls.baseUrl+ AppUrls.login,params: data);
   }
-
   Future<Response> getImage() {
     return apiClient.get(url: AppUrls.baseUrl);
   }

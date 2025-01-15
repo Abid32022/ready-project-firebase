@@ -10,6 +10,8 @@ import '../../../services/internet_conectivity_checker.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../services/shared_preference_service.dart';
+import '../../../utils/helper/setup_locator.dart';
 import '../../../utils/local_provider.dart';
 import '../../firebase_notification/notification_services.dart';
 
@@ -41,17 +43,22 @@ class _SplashScreenState extends State<SplashScreen> {
     //   }});
     ///firebase notification
 
-    LocalProvider localProvider = Provider.of<LocalProvider>(context, listen: false);
-    localProvider.getUserToken();
+    // LocalProvider localProvider = Provider.of<LocalProvider>(context, listen: false);
+    // localProvider.getUserToken();
+
+    locator.get<LocalProvider>().getUserToken();
+
     print("This is token ========>> ${AppConstants.getToken}");
     Timer(const Duration(seconds: 3), () {
       if(AppConstants.getToken.isEmpty){
+        context.push('/SignInScreen');
         // Navigator.pushAndRemoveUntil(
         //   context,
         //   MaterialPageRoute(builder: (context) => const GettingStarted()),
         //       (Route<dynamic> route) => false,
         // );
       } else {
+        print('HomeScreen');
         // Navigator.pushAndRemoveUntil(
         //   context,
         //   MaterialPageRoute(builder: (context) => const HomeScreen()),

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../config/app_constant.dart';
+import 'helper/custom_logger.dart';
 
 class NetworkHandler {
   static void handleDioError(DioException error) {
@@ -35,6 +36,7 @@ class NetworkHandler {
         break;
     }
 
+    AppLogger.error("DioError handled: $message", error, error.stackTrace);
     AppConstants.flutterToast(message: message);
     print("DioError in network error handler class =====> ${error.message}");
   }

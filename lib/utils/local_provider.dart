@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 
 import '../config/app_constant.dart';
 import '../services/secure_storage_services.dart';
-import '../services/shared_frefrence_service.dart';
+import '../services/shared_preference_service.dart';
 
 class LocalProvider with ChangeNotifier {
    Future<void> setData({required String language, required String email, required String userName}) async {

@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import '../services/shared_frefrence_service.dart';
+import '../services/shared_preference_service.dart';
 
 class AppConstants {
+
   static Future<void> getImage(Function(String?) updateImagePath) async {
     final ImagePicker picker = ImagePicker();
     final XFile? pickedImage =

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:my_qurbani/views/custom_widgets/custom_button.dart';
+import 'package:my_qurbani/views/custom_widgets/loading_verlay.dart';
 import 'package:my_qurbani/views/test/login_provider/login_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../services/shared_preference_service.dart';
+import '../../utils/helper/setup_locator.dart';
+import '../../utils/loading_services.dart';
 import '../custom_widgets/custom_dailogue.dart';
 import '../custom_widgets/custom_snackbar.dart';
 import '../custom_widgets/custom_textfield.dart';
@@ -20,31 +24,33 @@ class LoginScreenTest extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          AnimationLimiter(
-          child: Container(
-            child: ListView.builder(
-              shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: items.length,
-            itemBuilder: (context, index) {
-              return AnimationConfiguration.staggeredList(
-                  position: index,
-                  duration: const Duration(milliseconds: 500),
-                  child: SlideAnimation(
-                    verticalOffset: 50.0,
-                    child: FadeInAnimation(
-                      child: Card(
-                        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                        child: ListTile(
-                          title: Text(items[index]),
-                          trailing: Icon(Icons.arrow_forward),
-                        ),
-                      ),
-                    ),
-                  )
-              );
-            }),
-          ),),
+          /// listview.builder animated
+          // AnimationLimiter(
+          // child: Container(
+          //   child: ListView.builder(
+          //     shrinkWrap: true,
+          //   physics: NeverScrollableScrollPhysics(),
+          //   itemCount: items.length,
+          //   itemBuilder: (context, index) {
+          //     return AnimationConfiguration.staggeredList(
+          //         position: index,
+          //         duration: const Duration(milliseconds: 500),
+          //         child: SlideAnimation(
+          //           verticalOffset: 50.0,
+          //           child: FadeInAnimation(
+          //             child: Card(
+          //               margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          //               child: ListTile(
+          //                 title: Text(items[index]),
+          //                 trailing: Icon(Icons.arrow_forward),
+          //               ),
+          //             ),
+          //           ),
+          //         )
+          //     );
+          //   }),
+          // ),),
+          /// listview.builder animated
 
           // SizedBox(height: 50,),
           // AnimationLimiter(
@@ -109,17 +115,63 @@ class LoginScreenTest extends StatelessWidget {
           //   //       // FocusScope.of(context).requestFocus(_focusNode3);
           //   //     }
           //   // ),
-          //   // SizedBox(height: 20,),
-            // CustomButton(text: 'Login', loading: provider.loading, onPressed: (){
-            //   print('yes');
-            //   // provider.login(context: context);
-            //   showPlatformSnackbar(
-            //     context: context,
-            //     message: 'This is a success message!',
-            //     // isSuccess: true,
-            //   );
-            // },
-            //   width: 200),
+
+            SizedBox(height: 50,),
+          ValueListenableBuilder<bool>(
+            valueListenable: loadingService.getLoadingNotifier('login'),
+            builder: (context, isLoading, child) {
+              print('THe loading is ${isLoading}');
+              return isLoading
+                  ? CircularProgressIndicator()
+                  : CustomButton(
+                text: 'Login',
+                loading: false,
+                onPressed: () {
+
+                  print('The loading is No 1: ${loadingService.isLoading('login')}');
+                  provider.login(context: context);
+                  print('The loading is No 2: ${loadingService.isLoading('login')}');
+                },
+                width: 200,
+              );
+            },
+          ),
+
+          // ValueListenableBuilder<bool>(
+      //   valueListenable: loadingService.getLoadingNotifier('login'),
+      //   builder: (context, isLoading, child) {
+      //     return LoadingOverlay(
+      //       isLoading: isLoading,
+      //       child:
+      //     );
+      //   },
+      // ),
+
+
+      // LoadingOverlay(
+            //   isLoading: loadingService.isLoading('login'),
+            //   child: CustomButton(text: 'Login', loading: false, onPressed: (){
+            //     print('yes');
+            //     provider.login(context: context);
+            //     // showPlatformSnackbar(
+            //     //   context: context,
+            //     //   message: 'This is a success message!',
+            //     //   // isSuccess: true,
+            //     // );
+            //   },
+            //     width: 200),
+            // ),
+          SizedBox(height: 10,),
+          // CustomButton(text: 'Login', loading: provider.loading, onPressed: (){
+          //     print('yes');
+          //     provider.login(context: context);
+          //     // showPlatformSnackbar(
+          //     //   context: context,
+          //     //   message: 'This is a success message!',
+          //     //   // isSuccess: true,
+          //     // );
+          //   },
+          //     width: 200),
           //   // SizedBox(height: 20,),
           //   // CustomButton(text: 'Login', loading: false, onPressed: (){
           //   //   print('yes');
