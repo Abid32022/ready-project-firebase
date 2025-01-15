@@ -1,4 +1,4 @@
-# my_qurbani
+# ResFul Api's Archetecture
 
 A new Flutter project.
 Change the name app name,package name, app icon before starting new project.
@@ -11,7 +11,6 @@ Change the name app name,package name, app icon before starting new project.
 7.shared preference method already made as a custom.
 8.get image function made in appconstant for image picker and used in.
 9. go_route used
---------------------
 10. custom widgets
 11. cached network image
 12. custom button (with ios and android circular indicator pass only loading varaible)
@@ -21,9 +20,7 @@ Change the name app name,package name, app icon before starting new project.
 16. snackbar... like different for ios and android
 17. textwidget
 18. no_internet_screen you can choice it by your own design
--------------
 19.isolates for complex calculation etc used in text screen you can check.
-------
 20. Listview.builder in loginscreen animated one you can use it in different listview.builder
 21. gridview.builder animations also use in category scereen i think for animation.
 22. flutter toast is also pre build in 
