@@ -1,8 +1,12 @@
 # RESTful Api's Archetecture
 
-Only Change the name app name,package name, app icon before starting new project.
+Only Change the followings before starting new project---
+1.name app name.
+2.package name
+3.app icon.
+
 1.Change -- a.app_name b.package_name c.app_icon d.firebase to new project.
-----
+
 2.permissions done for image picker in both
 
 3.a.push notification with firebase for android and ios but ios configuration are remaning like appstore certificate etc
