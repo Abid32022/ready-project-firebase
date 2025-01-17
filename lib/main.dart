@@ -22,6 +22,7 @@ import 'package:my_qurbani/views/languageSelection/Provider/languageSelection_pr
 import 'package:my_qurbani/views/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 //localization
 //theming
@@ -73,17 +74,41 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message)async {
   await Firebase.initializeApp();
 }
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   setupLocator();
+//   await Firebase.initializeApp();
+//   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+//
+//   runApp(ChangeNotifierProvider(
+//     create: (_) => LanguageChangeController(),
+//     child: MyApp(),
+//   ),
+//   );
+// }
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupLocator();
-  await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  runApp(ChangeNotifierProvider(
-      create: (_) => LanguageChangeController(),
-      child: MyApp(),
-    ),
+  // Initialize Sentry
+  await SentryFlutter.init(
+        (options) {
+      options.dsn = 'https://f7938180402537b7255af19060a049fb@o4508647231127552.ingest.us.sentry.io/4508647236632576';
+      options.tracesSampleRate = 1.0; // Adjust in production
+      options.profilesSampleRate = 1.0; // Adjust profiling rate
+    },
+    // Run your app inside the appRunner to capture any initialization errors
+    appRunner: () async {
+      setupLocator();
+      await Firebase.initializeApp();
+      FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+      runApp(
+        ChangeNotifierProvider(
+          create: (_) => LanguageChangeController(),
+          child:  MyApp(),
+        ),
+      );
+    },
   );
 }
 

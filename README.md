@@ -40,6 +40,10 @@ Only Change the followings before starting new project---
 23. git (service locatore) done
 24. Logger (loggers done for api's archetecture)
 25. Url_launcher done for phone , whatsapp, call or website
+26. Pagination with getx controller
+27. pagiation in one file S.
+28. Any kind of file picker + you can read it
+29. search filter added
 
 
 

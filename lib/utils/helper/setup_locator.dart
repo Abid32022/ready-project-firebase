@@ -7,7 +7,7 @@ import 'package:my_qurbani/utils/local_provider.dart';
 import '../../config/app_validators.dart';
 import '../../services/secure_storage_services.dart';
 import '../../services/shared_preference_service.dart';
-import '../../views/test/get_it.dart';
+import '../../config/get_it.dart';
 import 'multiple_image_picker.dart';
 
 final locator = GetIt.instance;

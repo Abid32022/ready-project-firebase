@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-class ChatApp extends StatefulWidget {
+class ChatScreenSockets extends StatefulWidget {
   @override
-  _ChatAppState createState() => _ChatAppState();
+  _ChatScreenSocketsState createState() => _ChatScreenSocketsState();
 }
 
-class _ChatAppState extends State<ChatApp> {
+class _ChatScreenSocketsState extends State<ChatScreenSockets> {
   final _channel = WebSocketChannel.connect(
     Uri.parse('wss://echo.websocket.events'), // Replace with your WebSocket URL
   );
@@ -104,6 +104,6 @@ class _ChatAppState extends State<ChatApp> {
 
 void main() {
   runApp(MaterialApp(
-    home: ChatApp(),
+    home: ChatScreenSockets(),
   ));
 }

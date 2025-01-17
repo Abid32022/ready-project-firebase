@@ -20,9 +20,7 @@ class CategoryScreen extends StatefulWidget {
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
 }
-
 class _CategoryScreenState extends State<CategoryScreen> {
-
 
   String? _imagePath;
   String? _imagePath2;
@@ -64,7 +62,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 70 ,
+                  height: 70,
                 ),
                 ///image picker
                 if (_imagePath != null)
@@ -83,7 +81,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   },
                   child: Text('Pick Image'),
                 ),
-
                 if (_imagePath2 != null)
                   Image.file(
                     File(_imagePath2!),

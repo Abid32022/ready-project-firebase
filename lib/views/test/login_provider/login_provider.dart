@@ -37,7 +37,8 @@ class LoginProvider extends ChangeNotifier with LoadingMixin {
         // Print the raw response for debugging
         // print("Raw API response: $responseData");
 
-        AppLogger.debug('Api Response body is ${responseData}')
+
+        AppLogger.debug('Api Response body is $responseData');
       } else {
         setLoading(loading: false);
         // print("This is status code ==========> ${response.statusCode}");
