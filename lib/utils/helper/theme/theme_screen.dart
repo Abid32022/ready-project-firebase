@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_qurbani/views/theme/theme_provider.dart';
+import 'package:my_qurbani/utils/helper/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class LightDarkThemeScreen extends StatefulWidget {

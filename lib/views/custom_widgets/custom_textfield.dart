@@ -57,10 +57,12 @@ class CustomTextField extends StatelessWidget {
         validator: validator ?? (value) => null,
         onEditingComplete: onEditingComplete ?? () {},
         decoration: customDecoration ?? InputDecoration(
+
           labelText: labelText ?? "Label",
           hintText: hintText ?? "Enter text",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(color: Colors.white),
+            borderRadius: BorderRadius.circular(140),
           ),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,

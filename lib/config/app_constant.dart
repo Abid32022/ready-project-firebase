@@ -68,8 +68,31 @@ class AppConstants {
 
   static String formatDate(String dateString) {
     DateTime parsedDate = DateTime.parse(dateString);
-    String formattedDate = DateFormat('dd/MM/yyyy').format(parsedDate);
+    String formattedDate = DateFormat('E, MMM d yyyy').format(parsedDate);
     return formattedDate;
+  }
+
+  static String formatTime(String? offset) {
+    if (offset == null || offset.isEmpty) return 'Invalid Time';
+
+    try {
+      final sign = offset[0];
+      final parts = offset.substring(1).split(':');
+
+      if (parts.length == 2) {
+        final hours = int.parse(parts[0]);
+        final minutes = int.parse(parts[1]);
+
+        final adjustedHours = (sign == '+' ? hours : -hours).abs();
+        final formattedTime = '${adjustedHours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')} ${hours >= 12 ? 'PM' : 'AM'}';
+
+        return formattedTime;
+      }
+    } catch (e) {
+      return 'Invalid Time';
+    }
+
+    return 'Invalid Time';
   }
 
   static void copyToClipboard({required TextEditingController controller}) {

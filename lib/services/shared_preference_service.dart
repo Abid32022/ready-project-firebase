@@ -123,7 +123,7 @@ class AppLocalStorageServices {
   }
 
 
-  ///by iqra
+
 //security alerts
   Future<bool> setSecurityAlerts(bool isEnabled) {
     return _saveData('securityAlerts', isEnabled);
